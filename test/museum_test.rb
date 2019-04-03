@@ -50,4 +50,30 @@ class MuseumTest < Minitest::Test
     assert_equal expected_sally, @dmns.recommend_exhibits(@sally)
   end
 
+   # passes a patron object in as argument. Adds the patron to patrons array.
+   # Also adds the patron as a value in a hash and the hash key is
+   # the exhibit
+  def test_admit_method
+    @bob.add_interest("Dead Sea Scrolls")
+    @bob.add_interest("Gems and Minerals")
+    @sally.add_interest("Dead Sea Scrolls")
+
+    @dmns.admit(@bob)
+    @dmns.admit(@sally)
+
+    assert_equal [@bob, @sally], @dmns.patrons
+  end
+
 end
+# pry(main)> dmns.patrons
+# # => [#<Patron:0x00007fb2011455b8...>, #<Patron:0x00007fb20227f8b0...>]
+#
+# pry(main)> dmns.patrons_by_exhibit_interest
+# # =>
+# # {
+# #   #<Exhibit:0x00007fb202238618...> => [#<Patron:0x00007fb2011455b8...>],
+# #   #<Exhibit:0x00007fb202248748...> => [#<Patron:0x00007fb2011455b8...>, #<Patron:0x00007fb20227f8b0...>],
+# #   #<Exhibit:0x00007fb20225f8d0...> => []
+# # }
+#
+#

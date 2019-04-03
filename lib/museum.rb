@@ -11,4 +11,7 @@ class Museum
     @exhibits << exhibit
   end
 
+  def recommend_exhibits(patron_object)
+  end
+
 end

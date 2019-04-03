@@ -64,6 +64,25 @@ class MuseumTest < Minitest::Test
     assert_equal [@bob, @sally], @dmns.patrons
   end
 
+  def test_patrons_by_exhibit_method
+    @bob.add_interest("Dead Sea Scrolls")
+    @bob.add_interest("Gems and Minerals")
+    @sally.add_interest("Dead Sea Scrolls")
+
+    @dmns.admit(@bob)
+    @dmns.admit(@sally)
+
+    # return is a hash with Exhibit objects as keys and arrays of Patron
+    # objects as values
+    expected = {
+                @gems_and_minerals => [@bob],
+                @dead_sea_scrolls  => [@bob, @sally],
+                @imax              => []
+                }
+
+    assert_equal expected, @dmns.patrons_by_exhibit_interest
+  end
+
 end
 
 # pry(main)> dmns.patrons_by_exhibit_interest
@@ -73,5 +92,3 @@ end
 # #   #<Exhibit:0x00007fb202248748...> => [#<Patron:0x00007fb2011455b8...>, #<Patron:0x00007fb20227f8b0...>],
 # #   #<Exhibit:0x00007fb20225f8d0...> => []
 # # }
-#
-#

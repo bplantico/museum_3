@@ -27,6 +27,8 @@ class Museum
 
   def admit(patron)
     @patrons << patron
+    if patron.spending_money
+    end
   end
 
   def patrons_by_exhibit_interest

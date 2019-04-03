@@ -65,9 +65,7 @@ class MuseumTest < Minitest::Test
   end
 
 end
-# pry(main)> dmns.patrons
-# # => [#<Patron:0x00007fb2011455b8...>, #<Patron:0x00007fb20227f8b0...>]
-#
+
 # pry(main)> dmns.patrons_by_exhibit_interest
 # # =>
 # # {

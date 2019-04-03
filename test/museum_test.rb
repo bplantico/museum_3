@@ -43,18 +43,11 @@ class MuseumTest < Minitest::Test
 
     @sally.add_interest("IMAX")
 
-    expected_bob = [@dead_sea_scrolls, @gems_and_minerals]
-    expected_sally = [@dead_sea_scrolls, @gems_and_minerals]
+    expected_bob = [@gems_and_minerals, @dead_sea_scrolls]
+    expected_sally = [@imax]
 
     assert_equal expected_bob, @dmns.recommend_exhibits(@bob)
     assert_equal expected_sally, @dmns.recommend_exhibits(@sally)
   end
 
 end
-
-# pry(main)> dmns.recommend_exhibits(bob)
-# # => [#<Exhibit:0x00007fb400bbcdd8...>, #<Exhibit:0x00007fb400b851f8...>]
-#
-# pry(main)> dmns.recommend_exhibits(sally)
-# # => [#<Exhibit:0x00007fb400acc590...>]
-#

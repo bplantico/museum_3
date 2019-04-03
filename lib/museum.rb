@@ -11,7 +11,15 @@ class Museum
     @exhibits << exhibit
   end
 
-  def recommend_exhibits(patron_object)
+  # If patron_object interests are exhibits in the museum, then recommend the
+  # exhibit. Expected return is an array.
+  # museum.exhibits and patron.interests are both arrays.
+  def recommend_exhibits(patron)
+    recommended = []
+    @exhibits.each do |exhibit|
+      recommended << exhibit if patron.interests.include?(exhibit.name)
+    end
+    recommended
   end
 
 end
